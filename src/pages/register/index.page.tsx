@@ -1,11 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react'
 import { useRouter } from 'next/router'
-import { ArrowUpRight } from 'phosphor-react'
+import { ArrowRight } from 'phosphor-react'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { FormError, Header, RegisterContainer, RegisterForm } from './styles'
+import { api } from '../../lib/axios'
 
 const registerFormSchema = z.object({
   username: z
@@ -35,7 +36,14 @@ export default function Register() {
   const router = useRouter()
 
   async function handleRegister(data: RegisterFormData) {
-    console.log(data)
+    try {
+      await api.post('/users', {
+        name: data.name,
+        username: data.username,
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   useEffect(() => {
@@ -69,7 +77,7 @@ export default function Register() {
           {errors.name && <FormError>{errors.name.message}</FormError>}
         </label>
         <Button type="submit" disabled={isSubmitting}>
-          Próximo passo <ArrowUpRight />
+          Próximo passo <ArrowRight />
         </Button>
       </RegisterForm>
     </RegisterContainer>
