@@ -1,6 +1,6 @@
 import { Box, styled, Text } from '@ignite-ui/react'
 
-export const Form = styled(Box, {
+export const ClaimUsernameFormContainer = styled(Box, {
   display: 'grid',
   gridTemplateColumns: '1fr auto',
   gap: '$2',

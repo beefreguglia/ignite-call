@@ -3,7 +3,7 @@ import { ArrowRight } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form, FormAnnotation } from './styles'
+import { ClaimUsernameFormContainer, FormAnnotation } from './styles'
 
 const claimUsernameFormSchema = z.object({
   username: z
@@ -32,7 +32,10 @@ export function ClaimUsernameForm() {
 
   return (
     <>
-      <Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
+      <ClaimUsernameFormContainer
+        as="form"
+        onSubmit={handleSubmit(handleClaimUsername)}
+      >
         <TextInput
           size="sm"
           prefix="ignite.com/"
@@ -43,7 +46,7 @@ export function ClaimUsernameForm() {
           Reservar
           <ArrowRight />
         </Button>
-      </Form>
+      </ClaimUsernameFormContainer>
       <FormAnnotation>
         <Text size="sm">
           {errors.username
