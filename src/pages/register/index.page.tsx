@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { FormError, Header, RegisterContainer, RegisterForm } from './styles'
 import { api } from '../../lib/axios'
+import { AxiosError } from 'axios'
 
 const registerFormSchema = z.object({
   username: z
@@ -41,8 +42,13 @@ export default function Register() {
         name: data.name,
         username: data.username,
       })
+      await router.push('/register/connect-calendar')
     } catch (err) {
-      console.log(err)
+      if (err instanceof AxiosError && err?.response?.data?.message) {
+        alert(err.response.data.message)
+        return
+      }
+      console.error(err)
     }
   }
 
@@ -72,7 +78,7 @@ export default function Register() {
           {errors.username && <FormError>{errors.username.message}</FormError>}
         </label>
         <label>
-          <Text size="sm">Nome de usuário</Text>
+          <Text size="sm">Nome completo</Text>
           <TextInput placeholder="Seu nome" {...register('name')} />
           {errors.name && <FormError>{errors.name.message}</FormError>}
         </label>
