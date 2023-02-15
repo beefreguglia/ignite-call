@@ -1,5 +1,11 @@
 import { Box, styled, Text } from '@ignite-ui/react'
 
+export const ConnectCalendarContainer = styled('main', {
+  maxWidth: 572,
+  margin: '$20 auto $4',
+  padding: '0 $4',
+})
+
 export const ConnectBox = styled(Box, {
   marginTop: '$6',
   display: 'flex',
