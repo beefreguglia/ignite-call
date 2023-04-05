@@ -38,6 +38,7 @@ export const TimePicker = styled('div', {
 
 export const TimePickerHeader = styled(Text, {
   fontWeight: '$medium',
+
   '> span': {
     color: '$gray200',
   },
