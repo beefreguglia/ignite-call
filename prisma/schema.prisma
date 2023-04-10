@@ -22,7 +22,7 @@ model User {
 
   sessions      Session[]
   accounts      Account[]
-  timeIntervals UserTimeInterval[]
+  timeIntervals UserTimeIntervals[]
   Scheduling    Scheduling[]
 
   @@map("users")
@@ -60,7 +60,7 @@ model Session {
   @@map("sessions")
 }
 
-model UserTimeInterval {
+model UserTimeIntervals {
   id                    String @id @default(uuid())
   week_day              Int
   time_start_in_minutes Int
