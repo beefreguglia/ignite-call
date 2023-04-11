@@ -36,7 +36,7 @@ export default async function handler(
 
   await Promise.all(
     intervals.map((interval) => {
-      return prisma.userTimeInterval.create({
+      return prisma.userTimeIntervals.create({
         data: {
           week_day: interval.weekDay,
           time_start_in_minutes: interval.startTimeInMinutes,
